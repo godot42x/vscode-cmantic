@@ -14,7 +14,64 @@ import {
     setActiveLanguageServer
 } from '../../src/extension';
 import { commandHandlers } from '../../src/commands/commands';
-import { expectedLanguageServer, getClass, languageServerExtensionId, re_validSymbolName, wait } from './helpers';
+import {
+    expectedLanguageServer,
+    getClass,
+    languageServerExtensionId,
+    re_validSymbolName,
+    wait,
+
+} from './helpers';
+
+
+import { cpptoolsId, clangdId, cclsId } from '../../src/common';
+
+
+async function ensureCppLanguageServerInstalled(): Promise<void> {
+    const languageServers = [cpptoolsId, clangdId, cclsId];
+
+    for (const serverId of languageServers) {
+        const extension = vscode.extensions.getExtension(serverId);
+        if (extension && extension.isActive) {
+            console.log(`Found installed && activated language server: ${serverId}`);
+            return;
+        }
+    }
+
+    console.log('No activated C++ language server found. Installing C/C++ extension...');
+    try {
+        // prefer clangd
+        const preferredServerId = cpptoolsId;
+        if (!vscode.extensions.getExtension(preferredServerId)) {
+            // TODO: automatically trust or you need to click,
+            //  and accept the prompt in the vscode process installed at first time setup
+            // if (preferredServerId == clangdId) {
+            //     await vscode.commands.executeCommand(
+            //         'workbench.extensions.action.trustPublisher',
+            //         { publisherId: 'llvm-vs-code-extensions' });
+            // }
+            await vscode.commands.executeCommand('workbench.extensions.installExtension', preferredServerId);
+            console.log(`Successfully installed ${preferredServerId}`);
+        }
+
+        // Wait a bit for the extension to be registered
+        await new Promise(resolve => setTimeout(resolve, 2000));
+
+        const extension = vscode.extensions.getExtension(preferredServerId);
+        if (extension) {
+            await extension.activate()
+            console.log(`----- '${preferredServerId}' extension is now active`);
+        } else {
+            throw `'${preferredServerId}' extension is still not available after installation.`;
+        }
+    } catch (error) {
+        console.error('Failed to install C/C++ extension:', error);
+        throw new Error(`Failed to install C++ language server: ${error}`);
+    }
+}
+
+
+
 
 
 suite('Extension Test Suite', function () {
@@ -26,6 +83,9 @@ suite('Extension Test Suite', function () {
     let sourceDoc: SourceDocument;
 
     suiteSetup(async function () {
+        console.log('Setting up tests...');
+        await ensureCppLanguageServerInstalled();
+
         if (!process.env.DEBUG_TESTS) {
             const languageServerExtension = vscode.extensions.getExtension(languageServerExtensionId());
             assert(languageServerExtension);
@@ -34,7 +94,7 @@ suite('Extension Test Suite', function () {
             }
             assert(languageServerExtension.isActive);
             console.log('Running tests with '
-                    + languageServerExtension.id + ' ' + languageServerExtension.packageJSON.version);
+                + languageServerExtension.id + ' ' + languageServerExtension.packageJSON.version);
         }
 
         const testFilePath = path.join(testWorkspacePath, 'include', 'derived.h');
@@ -42,12 +102,15 @@ suite('Extension Test Suite', function () {
         const cppDoc = await vscode.languages.setTextDocumentLanguage(editor.document, 'cpp');
         sourceDoc = new SourceDocument(cppDoc);
 
+        console.log("Setting active language server...");
+        // await wait(60_000);
         setActiveLanguageServer();
 
         // Wait until the language server is initialized.
         const waitTime = process.env.CI ? 3_000 : 1_500;
         do {
             await wait(waitTime);
+            console.log("Waiting for language server to initialize...");
             await sourceDoc.executeSourceSymbolProvider();
         } while (!sourceDoc.symbols);
     });
@@ -91,12 +154,17 @@ suite('Extension Test Suite', function () {
     });
 
     test('Test CodeActionProvider', async function () {
+        console.log('Testing CodeActionProvider...');
         this.slow(2_500);
 
         const codeActionProvider = new CodeActionProvider();
 
         const sourceActions: CodeAction[] = await codeActionProvider.provideCodeActions(
-                sourceDoc, sourceDoc.rangeAt(0, 0), { diagnostics: [], only: vscode.CodeActionKind.Source });
+            sourceDoc, sourceDoc.rangeAt(0, 0), {
+            diagnostics: [],
+            triggerKind: vscode.CodeActionTriggerKind.Automatic,
+            only: vscode.CodeActionKind.Source
+        });
         assert.strictEqual(sourceActions.length, 3);
         assert.match(sourceActions[0].title, /^(Add|Amend) Header Guard$/);
         assert.strictEqual(sourceActions[1].title, 'Add Include');
@@ -105,7 +173,7 @@ suite('Extension Test Suite', function () {
         const testClass = getClass(sourceDoc);
 
         const refactorActions: CodeAction[] = await codeActionProvider.provideCodeActions(
-                sourceDoc, testClass.selectionRange, { diagnostics: [], only: vscode.CodeActionKind.Refactor });
+            sourceDoc, testClass.selectionRange, { diagnostics: [], triggerKind: vscode.CodeActionTriggerKind.Invoke, only: vscode.CodeActionKind.Refactor });
         assert.strictEqual(refactorActions.length, 4);
         assert.strictEqual(refactorActions[0].title, `Generate Equality Operators for "${testClass.name}"`);
         assert.strictEqual(refactorActions[1].title, `Generate Relational Operators for "${testClass.name}"`);
@@ -116,7 +184,11 @@ suite('Extension Test Suite', function () {
 
         for (const child of testClass.children) {
             const codeActions: CodeAction[] = await codeActionProvider.provideCodeActions(
-                    sourceDoc, child.selectionRange, { diagnostics: [] });
+                sourceDoc, child.selectionRange, {
+                diagnostics: [],
+                triggerKind: vscode.CodeActionTriggerKind.Invoke,
+                only: undefined
+            });
 
             const member = new CSymbol(child, sourceDoc);
             if (member.isFunctionDeclaration()) {
