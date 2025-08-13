@@ -1,9 +1,10 @@
 import * as vscode from 'vscode';
 
+import * as common from '../common';
 
-const refactoringsUri = vscode.Uri.parse('https://bigbahss.github.io/vscode-cmantic/features/refactorings/');
-const sourceActionsUri = vscode.Uri.parse('https://bigbahss.github.io/vscode-cmantic/features/source-actions/');
-const allFeaturesUri = vscode.Uri.parse('https://bigbahss.github.io/vscode-cmantic/features/');
+const refactoringsUri = vscode.Uri.parse(`https://${common.thief}.github.io/vscode-cmantic/features/refactorings/`);
+const sourceActionsUri = vscode.Uri.parse(`https://${common.thief}.github.io/vscode-cmantic/features/source-actions/`);
+const allFeaturesUri = vscode.Uri.parse(`https://${common.thief}.github.io/vscode-cmantic/features/`);
 
 export async function openDocumentation(codeActionKind?: vscode.CodeActionKind): Promise<boolean> {
     if (codeActionKind?.contains(vscode.CodeActionKind.Refactor)) {

@@ -6,9 +6,11 @@ import HeaderSourceCache from './HeaderSourceCache';
 import { commandHandlers } from './commands/commands';
 import { CodeActionProvider } from './CodeActionProvider';
 import { cclsId, clangdId, cpptoolsId, LanguageServer } from './common';
+import * as common from './common';
 
 
-export const cmanticId = 'tdennis4496.cmantic';
+// export const cmanticId = 'tdennis4496.cmantic';
+export const cmanticId = 'godot42.cmantic-forked';
 
 export const logger = new Logger('C-mantic');
 
@@ -136,10 +138,10 @@ function pollExtensionsToSetLanguageServer(): void {
 const re_semver = /^\d+\.\d+\.\d+$/;
 const versionKey = 'version';
 const updateMessage = `
-C-mantic v0.10.0: Added "C_mantic.cpp.accessor.getterNamingStyle" to specify the getter generation
+C-mantic v0.10.2: Added "getterNamingStyle" config to specify the 'get' prefix of getter generation.
 `
 const documentationButton = 'View Documentation';
-const documentationUri = vscode.Uri.parse('https://bigbahss.github.io/vscode-cmantic/changelog/v0.9.0/');
+const documentationUri = vscode.Uri.parse(`https://${common.thief}.github.io/vscode-cmantic/changelog/v0.10.2/`);
 
 async function showMessageOnFeatureUpdate(context: vscode.ExtensionContext): Promise<void> {
     const currentVersion = vscode.extensions.getExtension(cmanticId)?.packageJSON?.version;

@@ -8,3 +8,6 @@ export enum LanguageServer {
     clangd,
     ccls
 }
+
+
+export const thief = 'godot42x'; // "bigbahss"; :)

@@ -11,7 +11,7 @@ C-mantic is very easy to set up and is designed to work out-of-the-box. After in
 
 ## Install
 
-C-mantic can be installed directly from VS Code by searching for it in the `Extensions` side-bar, or by launching `Quick Open` (Ctrl+P) and entering the command `ext install tdennis4496.cmantic`. You can also download it directly from VS Code's Marketplace [here](https://marketplace.visualstudio.com/items?itemName=tdennis4496.cmantic).
+C-mantic can be installed directly from VS Code by searching for it in the `Extensions` side-bar, or by launching `Quick Open` (Ctrl+P) and entering the command `ext install godot42.cmantic-forked`. You can also download it directly from VS Code's Marketplace [here](https://marketplace.visualstudio.com/items?itemName=godot42.cmantic-forked).
 
 ## Requirements
 
@@ -19,11 +19,11 @@ Requires a C/C++ language server extension (IntelliSense) for full functionality
 
 ## Language Server
 
-C-mantic is designed to work with any C/C++ language server, and is primarily tested with [C/C++](https://marketplace.visualstudio.com/items?itemName=ms-vscode.cpptools) (`ms-vscode.cpptools`) and [clangd](https://marketplace.visualstudio.com/items?itemName=llvm-vs-code-extensions.vscode-clangd) (`llvm-vs-code-extensions.vscode-clangd`), but will also work on [ccls](https://marketplace.visualstudio.com/items?itemName=ccls-project.ccls) (`ccls-project.ccls`). If you use a different language server, C-mantic may still work, but is untested. If you find a bug that you suspect might be related to your language server, please open an [Issue](https://github.com/BigBahss/vscode-cmantic/issues) and state what language server you are using.
+C-mantic is designed to work with any C/C++ language server, and is primarily tested with [C/C++](https://marketplace.visualstudio.com/items?itemName=ms-vscode.cpptools) (`ms-vscode.cpptools`) and [clangd](https://marketplace.visualstudio.com/items?itemName=llvm-vs-code-extensions.vscode-clangd) (`llvm-vs-code-extensions.vscode-clangd`), but will also work on [ccls](https://marketplace.visualstudio.com/items?itemName=ccls-project.ccls) (`ccls-project.ccls`). If you use a different language server, C-mantic may still work, but is untested. If you find a bug that you suspect might be related to your language server, please open an [Issue](https://github.com/godot42x/vscode-cmantic/issues) and state what language server you are using.
 
 ## Troubleshooting
 
-If you find that features of C-mantic aren't working, first make sure that your language server (IntelliSense) is working correctly. To do this, check out the Outline View, usually found in the `Explorer` side-bar. The Outline View should show all source code symbols for the current file. Also, make sure `Go to Definition` and `Go to Declaration` are working. If C-mantic still isn't working correctly, open an [Issue](https://github.com/BigBahss/vscode-cmantic/issues) on GitHub and describe the problem along with any relevant information.
+If you find that features of C-mantic aren't working, first make sure that your language server (IntelliSense) is working correctly. To do this, check out the Outline View, usually found in the `Explorer` side-bar. The Outline View should show all source code symbols for the current file. Also, make sure `Go to Definition` and `Go to Declaration` are working. If C-mantic still isn't working correctly, open an [Issue](https://github.com/godot42x/vscode-cmantic/issues) on GitHub and describe the problem along with any relevant information.
 
 ## Tips
 

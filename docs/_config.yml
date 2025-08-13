@@ -22,8 +22,8 @@ title: C-mantic
 description: >- # this means to ignore newlines until "baseurl:"
   C/C++ code generation for VS Code: Generate function definitions, function declarations, getters, setters, comparison operators, and more.
 baseurl: "/vscode-cmantic/" # the subpath of your site, e.g. /blog
-url: "https://bigbahss.github.io" # the base hostname & protocol for your site, e.g. http://example.com
-github_username:  BigBahss
+url: "https://godot42x.github.io" # the base hostname & protocol for your site, e.g. http://example.com
+github_username:  godot42x
 
 # Build settings
 theme: just-the-docs
@@ -31,8 +31,8 @@ remote_theme: pmarsceill/just-the-docs
 color_scheme: dark
 
 aux_links:
-  "C-mantic on GitHub": "https://github.com/BigBahss/vscode-cmantic"
-  "Download": "https://marketplace.visualstudio.com/items?itemName=tdennis4496.cmantic"
+  "C-mantic(forked) on GitHub": "https://github.com/dexzhou/vscode-cmantic"
+  "Download": "https://marketplace.visualstudio.com/items?itemName=godot42.cmantic-forked"
 
 defaults:
   - scope:

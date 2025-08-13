@@ -17,3 +17,8 @@ The `Generate Getter and Setter`, `Generate Getter`, and `Generate Setter` comma
 Additionally, for non-primitive, non-pointer data types, setters will be generated with a const-reference (`const &`) parameter type. If you would like C-mantic to resolve `typedef`'s, `type-alias`'s, and `enum`'s, enable `Cpp: Resolve Types` in the settings (This is disabled by default as it may impact the performance of generating setters).
 
 The `Accessor: Getter Definition Location` and `Accessor: Setter Definition Location` settings control where the definitions of these member functions are placed (either inline, below class body, or in matching source file).
+
+---
+Besides, you can change the setting of `C_mantic.cpp.accessor.getterNamingStyle` to determine wether to generate the function name with start with `get`.
+
+And the `C_mantic.cpp.accessor.boolGetterIsPrefix` will override the operation above if variable type is boolean.

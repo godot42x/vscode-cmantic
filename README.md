@@ -6,22 +6,22 @@
 
 C-mantic provides code generation and refactorings for C/C++. Relevant code-actions are suggested via the light-bulb menu 💡, and can be accessed directly by selecting `Refactor...` or `Source Actions...` in the editor context menu. Code-actions are also available from the command palette or by keyboard shortcut.
 
-Full Documentation: [https://bigbahss.github.io/vscode-cmantic/](https://bigbahss.github.io/vscode-cmantic/)
+Full Documentation: [https://godot42x.github.io/vscode-cmantic/](https://godot42x.github.io/vscode-cmantic/)
 
 ## **Features at a glance**
 
-- [Add Definition](https://bigbahss.github.io/vscode-cmantic/features/add-definition/)
-- [Add Declaration](https://bigbahss.github.io/vscode-cmantic/features/add-declaration/)
-- [Update Function Signature](https://bigbahss.github.io/vscode-cmantic/features/update-function-signature/)
-- [Move Definition](https://bigbahss.github.io/vscode-cmantic/features/move-definition/)
-- [Generate Getters and Setters](https://bigbahss.github.io/vscode-cmantic/features/generate-getters-and-setters/)
-- [Generate Equality Operators](https://bigbahss.github.io/vscode-cmantic/features/generate-equality-operators/)
-- [Generate Relational Operators](https://bigbahss.github.io/vscode-cmantic/features/generate-relational-operators/)
-- [Generate Stream Output Operator](https://bigbahss.github.io/vscode-cmantic/features/generate-stream-output-operator/)
-- [Create Matching Source File](https://bigbahss.github.io/vscode-cmantic/features/create-matching-source-file/)
-- [Add Header Guard](https://bigbahss.github.io/vscode-cmantic/features/add-header-guard/)
-- [Add Include](https://bigbahss.github.io/vscode-cmantic/features/add-include/)
-- [Switch Header/Source in Workspace](https://bigbahss.github.io/vscode-cmantic/features/switch-header-source/)
+- [Add Definition](https://godot42x.github.io/vscode-cmantic/features/add-definition/)
+- [Add Declaration](https://godot42x.github.io/vscode-cmantic/features/add-declaration/)
+- [Update Function Signature](https://godot42x.github.io/vscode-cmantic/features/update-function-signature/)
+- [Move Definition](https://godot42x.github.io/vscode-cmantic/features/move-definition/)
+- [Generate Getters and Setters](https://godot42x.github.io/vscode-cmantic/features/generate-getters-and-setters/)
+- [Generate Equality Operators](https://godot42x.github.io/vscode-cmantic/features/generate-equality-operators/)
+- [Generate Relational Operators](https://godot42x.github.io/vscode-cmantic/features/generate-relational-operators/)
+- [Generate Stream Output Operator](https://godot42x.github.io/vscode-cmantic/features/generate-stream-output-operator/)
+- [Create Matching Source File](https://godot42x.github.io/vscode-cmantic/features/create-matching-source-file/)
+- [Add Header Guard](https://godot42x.github.io/vscode-cmantic/features/add-header-guard/)
+- [Add Include](https://godot42x.github.io/vscode-cmantic/features/add-include/)
+- [Switch Header/Source in Workspace](https://godot42x.github.io/vscode-cmantic/features/switch-header-source/)
 
 ## **Requirements**
 
@@ -29,29 +29,29 @@ Requires a C/C++ language server extension (IntelliSense) for full functionality
 
 ## **Issues and Feedback**
 
-If you find a bug or would like to request a new feature, please open an [Issue](https://github.com/BigBahss/vscode-cmantic/issues) on Github. Also, consider leaving the extension a [rating](https://marketplace.visualstudio.com/items?itemName=tdennis4496.cmantic#review-details).
+If you find a bug or would like to request a new feature, please open an [Issue](https://github.com/godot42x/vscode-cmantic/issues) on Github. Also, consider leaving the extension a [rating](https://marketplace.visualstudio.com/items?itemName=godot42.cmantic-forked#review-details).
 
 ## **Examples**
 
 ### **Add Definition**
 
-![Add Definition](https://bigbahss.github.io/vscode-cmantic/assets/images/add_definition.gif)
+![Add Definition](https://godot42x.github.io/vscode-cmantic/assets/images/add_definition.gif)
 
 ### **Update Function Signature**
 
-![Update Function Signature](https://bigbahss.github.io/vscode-cmantic/assets/images/update_signature.gif)
+![Update Function Signature](https://godot42x.github.io/vscode-cmantic/assets/images/update_signature.gif)
 
 ### **Generate Getters and Setters**
 
-![Generate Getters and Setters](https://bigbahss.github.io/vscode-cmantic/assets/images/generate_accessors.gif)
+![Generate Getters and Setters](https://godot42x.github.io/vscode-cmantic/assets/images/generate_accessors.gif)
 
 ## **Language Server**
 
-C-mantic is designed to work with any C/C++ language server, and is primarily tested with [C/C++](https://marketplace.visualstudio.com/items?itemName=ms-vscode.cpptools) (`ms-vscode.cpptools`) and [clangd](https://marketplace.visualstudio.com/items?itemName=llvm-vs-code-extensions.vscode-clangd) (`llvm-vs-code-extensions.vscode-clangd`), but will also work on [ccls](https://marketplace.visualstudio.com/items?itemName=ccls-project.ccls) (`ccls-project.ccls`). If you use a different language server, C-mantic may still work, but is untested. If you find a bug that you suspect might be related to your language server, please open an [Issue](https://github.com/BigBahss/vscode-cmantic/issues) and state what language server you are using.
+C-mantic is designed to work with any C/C++ language server, and is primarily tested with [C/C++](https://marketplace.visualstudio.com/items?itemName=ms-vscode.cpptools) (`ms-vscode.cpptools`) and [clangd](https://marketplace.visualstudio.com/items?itemName=llvm-vs-code-extensions.vscode-clangd) (`llvm-vs-code-extensions.vscode-clangd`), but will also work on [ccls](https://marketplace.visualstudio.com/items?itemName=ccls-project.ccls) (`ccls-project.ccls`). If you use a different language server, C-mantic may still work, but is untested. If you find a bug that you suspect might be related to your language server, please open an [Issue](https://github.com/godot42x/vscode-cmantic/issues) and state what language server you are using.
 
 ## **Troubleshooting**
 
-If you find that features of C-mantic aren't working, first make sure that your language server (IntelliSense) is working correctly. To do this, check out the Outline View, usually found in the `Explorer` side-bar. The Outline View should show all source code symbols for the current file. Also, make sure `Go to Definition` and `Go to Declaration` are working. If C-mantic still isn't working correctly, open an [Issue](https://github.com/BigBahss/vscode-cmantic/issues) on GitHub and describe the problem along with any relevant information.
+If you find that features of C-mantic aren't working, first make sure that your language server (IntelliSense) is working correctly. To do this, check out the Outline View, usually found in the `Explorer` side-bar. The Outline View should show all source code symbols for the current file. Also, make sure `Go to Definition` and `Go to Declaration` are working. If C-mantic still isn't working correctly, open an [Issue](https://github.com/godot42x/vscode-cmantic/issues) on GitHub and describe the problem along with any relevant information.
 
 ## **Tips**
 
@@ -61,7 +61,7 @@ If you find that features of C-mantic aren't working, first make sure that your 
 
 ## **Planned Features**
 
-The list of planned features can be found [here](https://bigbahss.github.io/vscode-cmantic/issues-feedback/#planned-features-and-improvements). Requests for new features/functionalities are welcome, just open an [Issue](https://github.com/BigBahss/vscode-cmantic/issues) on Github. If you'd like to contribute, feel free to open a pull-request.
+The list of planned features can be found [here](https://godot42x.github.io/vscode-cmantic/issues-feedback/#planned-features-and-improvements). Requests for new features/functionalities are welcome, just open an [Issue](https://github.com/godot42x/vscode-cmantic/issues) on Github. If you'd like to contribute, feel free to open a pull-request.
 
 ## **License**
 

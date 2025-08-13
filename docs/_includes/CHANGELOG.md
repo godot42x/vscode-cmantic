@@ -1,7 +1,7 @@
 # Changelog
 All notable changes to the `C-mantic` extension will be documented in this file.
 
-## [0.10.0] - August 14, 2025
+## [0.10.2] - August 14, 2025
 ### Forked && Added
 - Added custom getter naming support with new configuration options:
   - `C_mantic.cpp.accessor.getterNamingStyle`: Controls the naming style for generated getters ( `GetPrefix`, `PropertyName` )

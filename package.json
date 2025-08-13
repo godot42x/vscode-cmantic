@@ -2,7 +2,7 @@
   "name": "cmantic-forked",
   "displayName": "C-mantic(Forked)",
   "description": "C/C++ refactorings: Generate Definitions, Getters, Setters, and much more.",
-  "version": "0.10.1",
+  "version": "0.10.2",
   "icon": "docs/assets/images/cmantic.png",
   "publisher": "godot42",
   "author": {
