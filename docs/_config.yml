@@ -26,8 +26,9 @@ url: "https://godot42x.github.io" # the base hostname & protocol for your site, 
 github_username:  godot42x
 
 # Build settings
-theme: just-the-docs
-remote_theme: pmarsceill/just-the-docs
+# theme: just-the-docs
+theme: jekyll-theme-minimal
+# remote_theme: pmarsceill/just-the-docs
 color_scheme: dark
 
 aux_links:
