@@ -198,11 +198,17 @@ export default class CSymbol extends SourceSymbol {
             }
         }
 
-        if (formattedBaseName !== this.name) {
-            return formattedBaseName;
-        }
+        const namingStyle = cfg.getterNamingStyle(this.uri);
+        switch (namingStyle) {
+            case cfg.GetterNamingStyle.PropertyName:
+                return formattedBaseName;
+            case cfg.GetterNamingStyle.GetPrefix:
+                // Always use 'get_' prefix, will be formatted to 'get' or 'Get' based on case style
+                return cfg.formatToCaseStyle('get_' + formattedBaseName, this.uri);
 
-        return cfg.formatToCaseStyle('get_' + formattedBaseName, this.uri);
+            default:
+                return formattedBaseName;
+        }
     }
 
     setterName(): string {

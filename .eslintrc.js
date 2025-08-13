@@ -1,3 +1,4 @@
+
 module.exports = {
     "env": {
         "es6": true,
@@ -114,7 +115,7 @@ module.exports = {
         "no-return-await": "off",
         "@typescript-eslint/return-await": ["warn", "in-try-catch"],
         "semi": "off",
-        "@typescript-eslint/semi": ["warn", "always"],
+        "@typescript-eslint/semi": "off",
         "space-before-function-paren": "off",
         "@typescript-eslint/space-before-function-paren": [
             "warn",

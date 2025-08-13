@@ -2,9 +2,9 @@
   "name": "cmantic-forked",
   "displayName": "C-mantic(Forked)",
   "description": "C/C++ refactorings: Generate Definitions, Getters, Setters, and much more.",
-  "version": "0.9.1",
+  "version": "0.10.1",
   "icon": "docs/assets/images/cmantic.png",
-  "publisher": "godot42x",
+  "publisher": "godot42",
   "author": {
     "name": "Tyler Dennis",
     "url": "https://github.com/BigBahss"
@@ -417,10 +417,11 @@
     "eslint": "^7.18.0",
     "eslint-config-prettier": "^7.1.0",
     "glob": "^7.1.6",
+    "globals": "^16.3.0",
     "mocha": "^7.1.1",
-    "ts-loader": "^8.1.0",
-    "typescript": "^4.2.4",
-    "webpack": "^5.28.0",
-    "webpack-cli": "^4.6.0"
+    "ts-loader": "^9.5.2",
+    "typescript": "^4.1",
+    "webpack": "^5.101.1",
+    "webpack-cli": "^5.1.4"
   }
 }

@@ -1,0 +1,39 @@
+Language: Cpp
+BasedOnStyle: LLVM
+IndentWidth: 4
+BreakBeforeBraces: Custom
+TabWidth: 4
+
+AllowShortFunctionsOnASingleLine: true
+
+AlignArrayOfStructures: Right
+
+IndentPPDirectives: BeforeHash
+
+BraceWrapping:
+  AfterCaseLabel: true
+  AfterClass: true
+  AfterControlStatement: MultiLine
+  AfterEnum: true
+  AfterFunction: true
+  AfterNamespace: false
+  AfterObjCDeclaration: false
+  AfterStruct: false
+  AfterUnion: true
+  AfterExternBlock: false
+  BeforeCatch: true
+  BeforeElse: true
+  IndentBraces: false
+  SplitEmptyFunction: true
+  SplitEmptyRecord: false
+  SplitEmptyNamespace: true
+
+AlignConsecutiveAssignments: true
+AlignConsecutiveDeclarations: true
+KeepEmptyLinesAtTheStartOfBlocks: true
+MaxEmptyLinesToKeep: 3
+EmptyLineAfterAccessModifier: Leave
+PenaltyBreakComment: 300
+ColumnLimit: 0
+
+Standard: Auto

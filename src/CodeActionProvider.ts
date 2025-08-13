@@ -85,11 +85,9 @@ export class SourceAction extends CodeAction {
 }
 
 class LinkedLocation extends vscode.Location {
-    readonly linkedLocation: vscode.Location;
 
     constructor(symbol: CSymbol, linkedLocation: vscode.Location) {
         super(symbol.uri, declarationRange(symbol));
-        this.linkedLocation = linkedLocation;
     }
 }
 
@@ -347,7 +345,11 @@ export class CodeActionProvider extends vscode.Disposable implements vscode.Code
         }
 
         const updateSignature = new RefactorAction(title, 'cmantic.updateSignature');
-        updateSignature.setArguments(symbol, this.previousSig, sourceDoc, this.changedFunction.linkedLocation);
+        updateSignature.setArguments(
+            symbol,
+            this.previousSig,
+            sourceDoc,
+            new vscode.Location(this.changedFunction.uri, this.changedFunction.range));
 
         if (!context.only?.contains(vscode.CodeActionKind.Refactor)) {
             updateSignature.kind = vscode.CodeActionKind.QuickFix;
@@ -505,8 +507,8 @@ export class CodeActionProvider extends vscode.Disposable implements vscode.Code
                     && (declarationLocation?.uri.fsPath === definition.uri.fsPath
                     || declarationLocation?.uri.fsPath === matchingUri?.fsPath)) {
                 declarationDoc = declarationLocation.uri.fsPath === sourceDoc.uri.fsPath
-                        ? sourceDoc
-                        : await SourceDocument.open(declarationLocation.uri);
+                    ? sourceDoc
+                    : await SourceDocument.open(declarationLocation.uri);
                 declaration = await declarationDoc.getSymbol(declarationLocation.range.start);
                 moveDefinitionIntoOrOutOfClass.setArguments(definition, declarationDoc, declaration);
 

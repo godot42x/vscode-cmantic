@@ -28,10 +28,13 @@ export default class SourceDocument extends SourceFile implements vscode.TextDoc
     private _includedFiles?: string[];
     private _headerGuardDirectives?: SubSymbol[];
 
+    encoding: string;
+
     constructor(document: vscode.TextDocument, sourceFile?: SourceFile) {
         super(document.uri);
         this.doc = document;
         this.symbols = sourceFile?.symbols;
+        this.encoding = document.encoding || 'utf8';
     }
 
     static async open(uri: vscode.Uri): Promise<SourceDocument> {

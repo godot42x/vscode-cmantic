@@ -5,15 +5,17 @@
             "name": "Debug Extension",
             "type": "extensionHost",
             "request": "launch",
-            "runtimeExecutable": "${execPath}",
+            "runtimeExecutable": "${execPath}", // current vsode binary executable path
             "args": [
-                "--extensionDevelopmentPath=${workspaceFolder}"
+                "--extensionDevelopmentPath=${workspaceFolder}",
+                "${workspaceFolder}/test/workspace", // the cpp workspace
+                "--disable-extension=tdennis4496.cmantic", //  avoid same command registry confliction
             ],
             "outFiles": [
                 "${workspaceFolder}/dist/*.js"
             ],
             "sourceMaps": true,
-            "preLaunchTask": "${defaultBuildTask}",
+            "preLaunchTask": "${defaultBuildTask}", // search tasks.json for isDefault property
             "internalConsoleOptions": "neverOpen"
         },
         {

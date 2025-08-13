@@ -1,6 +1,12 @@
 # Changelog
 All notable changes to the `C-mantic` extension will be documented in this file.
 
+## [0.10.0] - August 14, 2025
+### Forked && Added
+- Added custom getter naming support with new configuration options:
+  - `C_mantic.cpp.accessor.getterNamingStyle`: Controls the naming style for generated getters ( `GetPrefix`, `PropertyName` )
+  - Upgrade package node, webpack, etc. versions.
+
 ## [0.9.0] - June 2, 2021
 ### Added
 - Added `Update Function Signature` code-action. After changing a function signature, this code-action will be provided to update that function's declaration or definition.

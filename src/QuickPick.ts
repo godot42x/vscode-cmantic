@@ -125,7 +125,7 @@ export function showMultiQuickPick<T extends vscode.QuickPickItem>(
 
         if (options.onDidChangeSelection) {
             disposables.push(qp.onDidChangeSelection(items => {
-                options.onDidChangeSelection!(items, qp);
+                options.onDidChangeSelection!(items.slice(), qp);
             }));
         }
 

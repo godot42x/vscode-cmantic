@@ -113,7 +113,7 @@ async function getIncludeCompletions(sourceDoc: SourceDocument, position: vscode
     for (const item of (completions?.items ?? []) as IncludeItem[]) {
         item.insertText = item.insertText instanceof vscode.SnippetString
                 ? item.insertText.value : (item.insertText ?? item.label);
-        switch (item.kind) {
+        switch (item.kind!) {
         case vscode.CompletionItemKind.Folder:
             item.label = '$(folder) ' + item.insertText;
             break;

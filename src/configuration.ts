@@ -1,6 +1,7 @@
 import * as vscode from 'vscode';
 import * as path from 'path';
 import * as util from './utility';
+import { logger } from './extension';
 
 
 export enum AlertLevel {
@@ -34,6 +35,11 @@ export enum CaseStyle {
     PascalCase
 }
 
+export enum GetterNamingStyle {
+    PropertyName,      //  PropertyName or PropertyName for matching case
+    GetPrefix  // Always use get/Get prefix based on case style
+}
+
 const defaultAlertLevel = AlertLevel.Info;
 const defaultHeaderExtensions = ['h', 'hpp', 'hh', 'hxx'];
 const defaultSourceExtensions = ['c', 'cpp', 'cc', 'cxx'];
@@ -52,6 +58,7 @@ const defaultCaseStyle = CaseStyle.camelCase;
 const defaultBracedInitialization = false;
 const defaultExplicitThisPointer = false;
 const defaultFriendComparisonOperators = false;
+const defaultGetterNamingStyle = GetterNamingStyle.PropertyName;
 
 export const cmanticKey = 'C_mantic';
 export const cpptoolsKey = 'C_Cpp';
@@ -275,5 +282,17 @@ export function searchExcludeGlobPattern(scope: vscode.ConfigurationScope): vsco
 }
 
 export function cpptoolsIntellisenseIsActive(scope?: vscode.ConfigurationScope): boolean {
-    return vscode.workspace.getConfiguration(cpptoolsKey, scope).get<string>('intelliSenseEngine') === 'Default';
+    return vscode.workspace.getConfiguration(cpptoolsKey, scope).get<string>('intelliSenseEngine') !== 'disabled';
+}
+
+export function getterNamingStyle(scope: vscode.ConfigurationScope): GetterNamingStyle {
+    const value = configuration(scope).get<string>('cpp.accessor.getterNamingStyle');
+    switch (value) {
+        case 'PropertyName':
+            return GetterNamingStyle.PropertyName;
+        case 'GetPrefix':
+            return GetterNamingStyle.GetPrefix;
+        default:
+            return defaultGetterNamingStyle;
+    }
 }

@@ -53,6 +53,9 @@ export function setActiveLanguageServer(): void {
         logger.logInfo(`Language server detected as ${cclsId}.`);
     } else {
         languageServer = LanguageServer.unknown;
+        if (process.env.DEBUG_TESTS) {
+            throw new Error(`No language server detected.`);
+        }
     }
 }
 
@@ -132,13 +135,14 @@ function pollExtensionsToSetLanguageServer(): void {
 
 const re_semver = /^\d+\.\d+\.\d+$/;
 const versionKey = 'version';
-const updateMessage =
-        'C-mantic v0.9.0: Added "Update Function Signature" code-action and completion suggestions to "Add Include".';
+const updateMessage = `
+C-mantic v0.10.0: Added "C_mantic.cpp.accessor.getterNamingStyle" to specify the getter generation
+`
 const documentationButton = 'View Documentation';
 const documentationUri = vscode.Uri.parse('https://bigbahss.github.io/vscode-cmantic/changelog/v0.9.0/');
 
 async function showMessageOnFeatureUpdate(context: vscode.ExtensionContext): Promise<void> {
-	const currentVersion = vscode.extensions.getExtension(cmanticId)?.packageJSON?.version;
+    const currentVersion = vscode.extensions.getExtension(cmanticId)?.packageJSON?.version;
     if (typeof currentVersion !== 'string' || !re_semver.test(currentVersion)) {
         return;
     }
