@@ -2,7 +2,7 @@
   "name": "cmantic-forked",
   "displayName": "C-mantic(Forked)",
   "description": "C/C++ refactorings: Generate Definitions, Getters, Setters, and much more.",
-  "version": "0.10.2",
+  "version": "0.10.3",
   "icon": "docs/assets/images/cmantic.png",
   "publisher": "godot42",
   "author": {
@@ -397,7 +397,7 @@
     "compile": "webpack --mode development",
     "compile-watch": "webpack --mode development --watch",
     "compile-tests": "tsc --project ./",
-    "test": "node ./out/test/runTest.js",
+    "test": "npm run compile-tests && node ./out/test/runTest.js",
     "lint": "eslint -c .eslintrc.js --ext .ts ./src --max-warnings=0",
     "update-docs": "node ./docs/build.js",
     "vscode:prepublish": "npm run lint && webpack --mode production && npm run update-docs",

@@ -85,9 +85,11 @@ export class SourceAction extends CodeAction {
 }
 
 class LinkedLocation extends vscode.Location {
+    readonly linkedLocation: vscode.Location;
 
     constructor(symbol: CSymbol, linkedLocation: vscode.Location) {
         super(symbol.uri, declarationRange(symbol));
+        this.linkedLocation = linkedLocation;
     }
 }
 
@@ -349,7 +351,7 @@ export class CodeActionProvider extends vscode.Disposable implements vscode.Code
             symbol,
             this.previousSig,
             sourceDoc,
-            new vscode.Location(this.changedFunction.uri, this.changedFunction.range));
+            this.changedFunction.linkedLocation);
 
         if (!context.only?.contains(vscode.CodeActionKind.Refactor)) {
             updateSignature.kind = vscode.CodeActionKind.QuickFix;
